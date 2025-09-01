@@ -88,6 +88,9 @@ export async function fetchLaunches({
         sort: sortOptions,
       },
     }),
+    next: {
+      revalidate: 86400,
+    },
   });
   if (!res.ok) throw new Error("Failed to fetch launches");
   return res.json();
@@ -98,6 +101,9 @@ export async function fetchAllLaunches(): Promise<Array<Launch>> {
     headers: {
       "Content-Type": "application/json",
     },
+    next: {
+      revalidate: 86400,
+    },
   });
   if (!res.ok) throw new Error("Failed to fetch launches");
   return res.json();
@@ -107,6 +113,9 @@ export async function fetchLaunch({ id }: { id: string }): Promise<Launch> {
   const res = await fetch(`https://api.spacexdata.com/v4/launches/${id}`, {
     headers: {
       "Content-Type": "application/json",
+    },
+    next: {
+      revalidate: 86400,
     },
   });
   if (!res.ok) throw new Error("Failed to fetch launches");

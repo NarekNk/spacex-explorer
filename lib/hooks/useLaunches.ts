@@ -36,7 +36,6 @@ export function useLaunches({
       : {}),
     queryKey: ["launches", favorites?.filter, params, params.search],
     queryFn: ({ pageParam = initialPage }) => {
-      console.log(pageParam, params);
       try {
         if (initialData && !hasActiveFilters && pageParam === 1) {
           return initialData[0];
